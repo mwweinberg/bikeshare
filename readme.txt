@@ -8,7 +8,7 @@ bikeshare.py is the most mature functional version of the program. It is designe
 
 wmata_pull.py - downloads the json version of U st. data and prints line/destination/time for first train
 
-wmata_parse.py - sets variables for the relevant data points in wmata data
+wmata_parse.py - is the running version of the WMATA scraper
 
 h.py - sets neopixel connected to arduino based on H parameter
 
