@@ -17,3 +17,5 @@ l.py - sets neopizel connected to arduino based on L parameter
 arduino-two-light - makes arduino respond to "H" or "L" serial command
 
 light-true.py - you can pick the light display at the prompt.  However, there is no way to change it once it has been picked.  Question asked here: http://stackoverflow.com/questions/38422701/interrupt-while-loop-with-user-input-controlling-neopixels-via-arduino-and-pyth
+
+neopixeltestlayout.fzz is the fritzing diagram of the 2 neopixel/arduino test setup
