@@ -1,10 +1,6 @@
 import urllib, json
 url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/E03?api_key=547990fbdfe344f49dfc4df55a88c26a"
-response = urllib.urlopen(url)
-data = json.loads(response.read())
 
-
-w = data['Trains']
 green_list = []
 yellow_list = []
 wmata_serial = []
@@ -14,7 +10,9 @@ wmata_serial = []
 #this is the syntax to get the line for the first train from the data
 #print w[0]['Line']
 
-
+response = urllib.urlopen(url)
+data = json.loads(response.read())
+w = data['Trains']
 
 
 # this iterates through all of the trains and adds all the times for southbound trains either the list green_list[] or yellow_list[].
@@ -87,9 +85,11 @@ if len(green_list) >= 1:
 
 	if green_one == 'ARR':
 			print "you missed the next southbound green train because it is arriving"
+			wmata_serial.append('a')
 
 	elif green_one == 'BRD':
 			print "you missed the next southbound green train because it is boarding"
+			wmata_serial.append('a')
 
 	elif int(green_one) <= 4:
 			print "you missed the next southbound green train"
@@ -112,9 +112,11 @@ if len(green_list) >= 2:
 
 	if green_two == 'ARR':
 			print "you missed the next southbound green train because it is arriving"
+			wmata_serial.append('e')
 
 	elif green_two == 'BRD':
 			print "you missed the next southbound green train because it is boarding"
+			wmata_serial.append('e')
 
 	if int(green_two) <= 4:
 			print "you missed the next southbound green train"
@@ -136,9 +138,11 @@ if len(yellow_list) >= 1:
 
 	if yellow_one == 'ARR':
 			print "you missed it because it is arriving"
+			wmata_serial.append('i')
 
 	elif yellow_one == 'BRD':
 			print "you missed it because it is boarding"
+			wmata_serial.append('i')
 
 	elif int(yellow_one) <= 4:
 			print "you missed it"
@@ -161,9 +165,11 @@ if len(yellow_list) >= 2:
 
 	if yellow_two == 'ARR':
 			print "you missed it because it is arriving"
+			wmata_serial.append('m')
 
 	elif yellow_two == 'BRD':
 			print "you missed it because it is boarding"
+			wmata_serial.append('m')
 
 	if int(yellow_two) <= 4:
 			print "you missed it"
