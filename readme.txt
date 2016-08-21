@@ -23,3 +23,7 @@ neopixeltestlayout.fzz is the fritzing diagram of the 2 neopixel/arduino test se
 bikeshare_serial.py send the bikeshare stations to the arduino via serial command
 
 bikeshare_serial_responder is the arduino program that receives the command, parses it, and lights up neopixels accordingly
+
+wmata_serial.py sends the wmata information to the arduino via serial communication
+
+wmata_serial_responder is the arduino program that recieves the command, parses it, and lights up the neopixes accordingly
