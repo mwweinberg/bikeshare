@@ -26,32 +26,18 @@ station4 = '15' # 14th & V
 ser_holder = []
 
 #opens up the serial connection with arduino
-ser = serial.Serial('/dev/ttyACM0', 9600)
+#ser = serial.Serial('/dev/ttyACM0', 9600)
 #this is necessary because once it opens up the serial port arduino needs a second
 time.sleep(2)
 
 
 
-#we get the root tag
-root=doc.getroot()
-root.tag
 
-#we define empty lists for the empty bikes
+
+#define empty lists for the empty bikes
 sID=[]
 embikes=[]
-#we now use a for loop to extract the information we are interested in
-for country in root.findall('station'):
-	# takes the ID as a string
-	sID.append(country.find('id').text)
-	# takes the number of bikes as an integer
-	embikes.append(int(country.find('nbBikes').text))
 
-
-#use zip to create touples and then parse them into a dictionary
-prov=dict(zip(sID,embikes))
-
-#this print command was for testing and can be removed
-#print prov['15']
 
 # this function returns a color based on the number of bikes remaining
 # each serial write needs to be specific to a station
@@ -75,6 +61,21 @@ def lighter(id, green, yellow, orange, red):
 
 # now run the function taking all of the stations as an argument
 while True:
+
+	#get the root tag
+	root=doc.getroot()
+	root.tag
+	#use a for loop to extract the information we are interested in
+	for country in root.findall('station'):
+		# takes the ID as a string
+		sID.append(country.find('id').text)
+		# takes the number of bikes as an integer
+		embikes.append(int(country.find('nbBikes').text))
+
+
+	#use zip to create touples and then parse them into a dictionary
+	prov=dict(zip(sID,embikes))
+
 	#this cleans out the last loop's ser_holder variables
 	ser_holder = []
 
@@ -91,5 +92,5 @@ while True:
 	#TODO: add %/n or whatever terminal character is needed
 	print ser_holder
 	print ser_holder_str
-	ser.write(ser_holder)
+	#ser.write(ser_holder)
 	time.sleep(10)
