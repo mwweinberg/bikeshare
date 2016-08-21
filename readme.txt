@@ -19,3 +19,7 @@ arduino-two-light - makes arduino respond to "H" or "L" serial command
 light-true.py - you can pick the light display at the prompt.  However, there is no way to change it once it has been picked.  Question asked here: http://stackoverflow.com/questions/38422701/interrupt-while-loop-with-user-input-controlling-neopixels-via-arduino-and-pyth
 
 neopixeltestlayout.fzz is the fritzing diagram of the 2 neopixel/arduino test setup
+
+bikeshare_serial.py send the bikeshare stations to the arduino via serial command
+
+bikeshare_serial_responder is the arduino program that receives the command, parses it, and lights up neopixels accordingly
