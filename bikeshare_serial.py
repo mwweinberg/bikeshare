@@ -26,7 +26,7 @@ station4 = '15' # 14th & V
 ser_holder = []
 
 #opens up the serial connection with arduino
-#ser = serial.Serial('/dev/ttyACM0', 9600)
+ser = serial.Serial('/dev/ttyACM0', 9600)
 #this is necessary because once it opens up the serial port arduino needs a second
 time.sleep(2)
 
@@ -92,5 +92,5 @@ while True:
 	#TODO: add %/n or whatever terminal character is needed
 	print ser_holder
 	print ser_holder_str
-	#ser.write(ser_holder)
+	ser.write(ser_holder)
 	time.sleep(10)
