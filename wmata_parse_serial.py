@@ -9,6 +9,8 @@ wmata_serial = []
 
 
 
+
+
 #opens up the serial connection with arduino
 ser = serial.Serial('/dev/ttyACM0', 9600)
 #this is necessary because once it opens up the serial port arduino needs a second
@@ -29,61 +31,48 @@ while True:
 
 	response = urllib.urlopen(url)
 	data = json.loads(response.read())
+	# w is the data in the list "trains" which are the trains coming to
+	#the station
 	w = data['Trains']
 
 
 	# this iterates through all of the trains and adds all the times for southbound trains either the list green_list[] or yellow_list[].
+	#range is (0,len(w)) because the number of trains varies
+	#if you choose too many you get an error
+	#if you chose too few you miss some
 
-	for i in range (0,4):
+	for i in range (0,len(w)):
 
 		if w[i]['Line'] == 'GR':
 
-			#this is a northern-bound train so it doesn't matter for the final product
-
-			if w[i]['Destination'] == 'Grnbelt':
-				print "A green train that is going to Greenbelt will arrive in %s minutes" % (w[i]['Min'])
-
 			#this is the southern train so they get added to the list
 
+			if w[i]['Destination'] == 'Brnch Av':
 
-			elif w[i]['Destination'] == 'Brnch Av':
-				print "A green train that is going to Branch Ave. will arrive in %s minutes" % (w[i]['Min'])
-
+				print "green in interation %s is %s" % (i, w[i]['Min'])
 				green_list.append(w[i]['Min'])
-
-
-
-
-			else:
-				print "Another metro data screwup"
-
 
 
 		elif w[i]['Line'] == 'YL':
 
-			#this is a northern-bound train so it doesn't matter for the final product
-
-			if w[i]['Destination'] == 'Grnbelt':
-				print "A yellow train that is going to Greenbelt will arrive in %s minutes" % (w[i]['Min'])
-
-			elif w[i]['Destination'] == 'Ft.Tottn':
-				print "A yellow train that is going to Ft. Totten will arrive in %s minutes" % (w[i]['Min'])
-
 			#these are the two desinations of the southern trains so they get added to the list
 
-			elif w[i]['Destination'] == 'Hntingtn':
-				print "A yellow train that is going to Huntington and will arrive in %s minutes" % (w[i]['Min'])
+			if w[i]['Destination'] == 'Hntingtn':
 
+				print "yellow in interation %s is %s" % (i, w[i]['Min'])
 				yellow_list.append(w[i]['Min'])
 
 			elif w[i]['Destination'] == 'Brnch Av':
-				print "A yellow train that is going to Franconia-Springfield will arrive in %s minutes" % (w[i]['Min'])
 
+				print "yellow in interation %s is %s" % (i, w[i]['Min'])
 				yellow_list.append(w[i]['Min'])
 
 
-			else:
-				print "Another metro data screwup"
+
+		print "green_list after %s iterations is %s." % (i, green_list)
+		print "yellow_list after %s iterations is %s." % (i, yellow_list)
+		print ""
+
 
 	# these lists now have the arrival times for as many as the next four trains
 
@@ -96,7 +85,7 @@ while True:
 
 	#this chunk assigns the light position for the first green train
 	#this limit is to avoid a range error if the isn't a value in the first position
-	if len(green_list) >= 1:
+	if len(green_list) == 1:
 
 		green_one = green_list[0]
 
@@ -124,6 +113,29 @@ while True:
 	#this chunk assigns the light position for the second green train
 
 	if len(green_list) >= 2:
+
+		green_one = green_list[0]
+
+		if green_one == 'ARR':
+				print "you missed the next southbound green train because it is arriving"
+				wmata_serial.append('a')
+
+		elif green_one == 'BRD':
+				print "you missed the next southbound green train because it is boarding"
+				wmata_serial.append('a')
+
+		elif int(green_one) <= 4:
+				print "you missed the next southbound green train"
+				wmata_serial.append('a')
+		elif 5 <= int(green_one) <= 9:
+				print "leave now for the next southbound green train!"
+				wmata_serial.append('b')
+		elif 10 <= int(green_one) <= 15:
+				print "the next southbound green train is coming soon"
+				wmata_serial.append('c')
+		elif 16 <= int(green_one) <= 25:
+				print "the next southbound green train is a long way off"
+				wmata_serial.append('d')
 
 		green_two = green_list[1]
 
