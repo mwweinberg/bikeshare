@@ -7,13 +7,13 @@ green_list = []
 yellow_list = []
 wmata_serial = []
 
-#TODO: uncomment the arduino ser parts here and at the very end
-"""
+
+
 #opens up the serial connection with arduino
 ser = serial.Serial('/dev/ttyACM0', 9600)
 #this is necessary because once it opens up the serial port arduino needs a second
 time.sleep(2)
-"""
+
 
 
 #this is the syntax to get the line for the first train from the data
@@ -23,6 +23,8 @@ while True:
 
 	#clears out data from last loop
 	wmata_serial = []
+	green_list = []
+	yellow_list = []
 
 
 	response = urllib.urlopen(url)
@@ -205,5 +207,5 @@ while True:
 	wmata_serial_str = ''.join(wmata_serial)
 	print wmata_serial
 	print wmata_serial_str
-	#ser.write(wmata_serial)
+	ser.write(wmata_serial)
 	time.sleep(10)
