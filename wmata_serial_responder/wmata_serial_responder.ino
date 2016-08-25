@@ -51,78 +51,95 @@ void loop() {
 
     //first light (at station)
 
-    //first green train
-    if (str.indexOf('a') >= 0) {
-      strip.setPixelColor(0, 255, 0, 0);
-    }
-    //second green train
-    if (str.indexOf('e') >= 0) {
-      strip.setPixelColor(0, 255, 0, 0);
-    }
     // first yellow train
     if (str.indexOf('i') >= 0) {
       strip.setPixelColor(0, 255, 255, 0);
     }
+    //first green train
+    else if (str.indexOf('a') >= 0) {
+      strip.setPixelColor(0, 255, 0, 0);
+    }
     // second yellow train
-    if (str.indexOf('m') >= 0) {
+    else if (str.indexOf('m') >= 0) {
       strip.setPixelColor(0, 255, 255, 0);
+    }    
+    //second green train
+    else if (str.indexOf('e') >= 0) {
+      strip.setPixelColor(0, 255, 0, 0);
+    }    
+    // turns off the LED if nothing here
+    else {
+      strip.setPixelColor(0, 0, 0, 0);
     }
 
     //second light (leave now)
 
-    //first green train
-    if (str.indexOf('b') >= 0) {
-      strip.setPixelColor(1, 255, 0, 0);
-    }
-    //second green train
-    if (str.indexOf('f') >= 0) {
-      strip.setPixelColor(1, 255, 0, 0);
-    }
     // first yellow train
     if (str.indexOf('j') >= 0) {
       strip.setPixelColor(1, 255, 255, 0);
     }
+    //first green train
+    else if (str.indexOf('b') >= 0) {
+      strip.setPixelColor(1, 255, 0, 0);
+    }
     // second yellow train
-    if (str.indexOf('n') >= 0) {
+    else if (str.indexOf('n') >= 0) {
       strip.setPixelColor(1, 255, 255, 0);
     }
+    //second green train
+    else if (str.indexOf('f') >= 0) {
+      strip.setPixelColor(1, 255, 0, 0);
+    }    
+    // turns off the LED if nothing here
+    else {
+      strip.setPixelColor(1, 0, 0, 0);
+    }
+      
 
     //third light (coming soon)
 
-    //first green train
-    if (str.indexOf('c') >= 0) {
-      strip.setPixelColor(2, 255, 0, 0);
-    }
-    //second green train
-    if (str.indexOf('g') >= 0) {
-      strip.setPixelColor(2, 255, 0, 0);
-    }
     // first yellow train
     if (str.indexOf('k') >= 0) {
       strip.setPixelColor(2, 255, 255, 0);
     }
+    //first green train
+    else if (str.indexOf('c') >= 0) {
+      strip.setPixelColor(2, 255, 0, 0);
+    }
     // second yellow train
-    if (str.indexOf('o') >= 0) {
+    else if (str.indexOf('o') >= 0) {
       strip.setPixelColor(2, 255, 255, 0);
+    }
+    //second green train
+    else if (str.indexOf('g') >= 0) {
+      strip.setPixelColor(2, 255, 0, 0);
+    }    
+    // turns off the LED if nothing here
+    else {
+      strip.setPixelColor(2, 0, 0, 0);
     }
 
     //fourth light (long way off)
 
-    //first green train
-    if (str.indexOf('d') >= 0) {
-      strip.setPixelColor(3, 255, 0, 0);
-    }
-    //second green train
-    if (str.indexOf('h') >= 0) {
-      strip.setPixelColor(3, 255, 0, 0);
-    }
     // first yellow train
     if (str.indexOf('l') >= 0) {
       strip.setPixelColor(3, 255, 255, 0);
     }
+    //first green train
+    else if (str.indexOf('d') >= 0) {
+      strip.setPixelColor(3, 255, 0, 0);
+    }
     // second yellow train
-    if (str.indexOf('p') >= 0) {
+    else if (str.indexOf('p') >= 0) {
       strip.setPixelColor(3, 255, 255, 0);
+    }
+    //second green train
+    else if (str.indexOf('h') >= 0) {
+      strip.setPixelColor(3, 255, 0, 0);
+    }    
+    // turns off the LED if nothing here
+    else {
+      strip.setPixelColor(3, 0, 0, 0);
     }
 
    
