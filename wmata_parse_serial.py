@@ -5,7 +5,7 @@ url = "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/E03?api_ke
 
 green_list = []
 yellow_list = []
-wmata_serial = []
+
 
 
 
