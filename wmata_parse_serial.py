@@ -67,6 +67,11 @@ while True:
 				print "yellow in interation %s is %s" % (i, w[i]['Min'])
 				yellow_list.append(w[i]['Min'])
 
+			elif w[i]['Destination'] == 'Frnconia':
+
+				print "yellow in interation %s is %s" % (i, w[i]['Min'])
+				yellow_list.append(w[i]['Min'])
+
 
 
 		print "green_list after %s iterations is %s." % (i, green_list)
@@ -135,7 +140,7 @@ while True:
 				wmata_serial.append('e')
 		elif green_two == '':
 			pass
-		if int(green_two) <= 4:
+		elif int(green_two) <= 4:
 				wmata_serial.append('e')
 		elif 5 <= int(green_two) <= 9:
 				wmata_serial.append('f')
@@ -176,7 +181,7 @@ while True:
 				wmata_serial.append('m')
 		elif yellow_two == '':
 			pass
-		if int(yellow_two) <= 4:
+		elif int(yellow_two) <= 4:
 				wmata_serial.append('m')
 		elif 5 <= int(yellow_two) <= 9:
 				wmata_serial.append('n')
