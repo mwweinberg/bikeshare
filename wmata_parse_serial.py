@@ -28,12 +28,20 @@ while True:
 	green_list = []
 	yellow_list = []
 
+	#the try/except is for handing errors on the WMATA side
 
-	response = urllib.urlopen(url)
-	data = json.loads(response.read())
-	# w is the data in the list "trains" which are the trains coming to
-	#the station
-	w = data['Trains']
+	try:
+		response = urllib.urlopen(url)
+		data = json.loads(response.read())
+		# w is the data in the list "trains" which are the trains coming to
+		#the station
+		w = data['Trains']
+	except ValueError:
+		#this is just a dummy json that only contains a northbound train so that
+		#the rest of the script has something to work with that won't return
+		#anything		
+		w = [{'Group': '1', 'Min': 'BRD', 'DestinationCode': 'E06', 'Car': '6', 'Destination': 'Ft.Tottn', 'DestinationName': 'Fort Totten', 'LocationName': 'U Street/African-Amer Civil War Memorial/Cardozo', 'Line': 'YL', 'LocationCode': 'E03'}]
+
 
 
 	# this iterates through all of the trains and adds all the times for southbound trains either the list green_list[] or yellow_list[].
