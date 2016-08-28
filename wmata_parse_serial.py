@@ -36,10 +36,12 @@ while True:
 		# w is the data in the list "trains" which are the trains coming to
 		#the station
 		w = data['Trains']
+		#this closes the socket to avoid name resolution errors
+		response.close()
 	except ValueError:
 		#this is just a dummy json that only contains a northbound train so that
 		#the rest of the script has something to work with that won't return
-		#anything		
+		#anything
 		w = [{'Group': '1', 'Min': 'BRD', 'DestinationCode': 'E06', 'Car': '6', 'Destination': 'Ft.Tottn', 'DestinationName': 'Fort Totten', 'LocationName': 'U Street/African-Amer Civil War Memorial/Cardozo', 'Line': 'YL', 'LocationCode': 'E03'}]
 
 
