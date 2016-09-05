@@ -7,10 +7,7 @@ import urllib2
 import time
 import serial
 
-# parse the data using urlib2 and xml
-site='https://www.capitalbikeshare.com/data/stations/bikeStations.xml'
-htm=urllib2.urlopen(site)
-doc = ET.parse(htm)
+
 
 # define the stations that will be identified
 # note that these use the number in <id> not the <terminalName>
@@ -21,6 +18,7 @@ station1 = '274' # 10th & Fl
 station2 = '43' # 10th & U
 station3 = '242' # 12th & U
 station4 = '15' # 14th & V
+station5 =  '272'# 14th & Belmont
 
 
 ser_holder = []
@@ -62,6 +60,12 @@ def lighter(id, green, yellow, orange, red):
 # now run the function taking all of the stations as an argument
 while True:
 
+	# parse the data using urlib2 and xml
+	# it is down here so it hits the site again every time
+	site='https://www.capitalbikeshare.com/data/stations/bikeStations.xml'
+	htm=urllib2.urlopen(site)
+	doc = ET.parse(htm)
+
 	#get the root tag
 	root=doc.getroot()
 	root.tag
@@ -83,6 +87,7 @@ while True:
 	lighter(station2, 'E', 'F', 'G', 'H')
 	lighter(station3, 'I', 'J', 'K', 'L')
 	lighter(station4, 'M', 'N', 'O', 'P')
+	lighter(station5, 'Q', 'R', 'S', 'T')
 
 	#add terminating char to ser_holder for arudino reading
 	ser_holder.append('Z')

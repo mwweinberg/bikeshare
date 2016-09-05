@@ -15,7 +15,7 @@ String str;
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(4, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(5, PIN, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
@@ -101,20 +101,38 @@ void loop() {
 
     //fourth station
 
-    if (str.indexOf('I') >= 0) {
+    if (str.indexOf('M') >= 0) {
       strip.setPixelColor(3, 255, 0, 0);
     }
 
-    if (str.indexOf('J') >= 0) {
+    if (str.indexOf('N') >= 0) {
       strip.setPixelColor(3, 255, 255, 0);
     }
 
-    if (str.indexOf('K') >= 0) {
+    if (str.indexOf('O') >= 0) {
       strip.setPixelColor(3, 128, 255, 0);
     }
 
-    if (str.indexOf('L') >= 0) {
+    if (str.indexOf('P') >= 0) {
       strip.setPixelColor(3, 0, 255, 0);
+    }
+
+     //fifth station
+
+    if (str.indexOf('Q') >= 0) {
+      strip.setPixelColor(4, 255, 0, 0);
+    }
+
+    if (str.indexOf('R') >= 0) {
+      strip.setPixelColor(4, 255, 255, 0);
+    }
+
+    if (str.indexOf('S') >= 0) {
+      strip.setPixelColor(4, 128, 255, 0);
+    }
+
+    if (str.indexOf('T') >= 0) {
+      strip.setPixelColor(4, 0, 255, 0);
     }
    
   }
